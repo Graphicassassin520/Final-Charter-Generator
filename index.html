@@ -29,29 +29,50 @@
                 height: auto;
             }
         }
+        /* Custom styles to match Closers Toolbox color scheme */
+        body {
+            background-color: #1A2526; /* Deep navy blue */
+            color: #F5DEB3; /* Creamy off-white with beige undertone */
+        }
+        #name-form, #certificate-container {
+            background-color: #2A3C40; /* Lighter shade of blue */
+        }
+        #name-form input {
+            background-color: #FFFFFF; /* White background for contrast */
+            color: #1A2526; /* Deep navy blue text */
+        }
+        .btn-custom {
+            background-color: #2A3C40; /* Dark teal button fill */
+            color: #F5DEB3; /* Creamy off-white text */
+            border: none;
+            box-shadow: 0 0 10px #DAA520, 0 0 20px #DAA520; /* Glowing yellow-orange border */
+        }
+        .btn-custom:hover {
+            background-color: #3A4C50; /* Slightly lighter shade on hover */
+        }
     </style>
 </head>
-<body class="bg-blue-900 text-white min-h-screen flex flex-col items-center justify-center p-4">
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
     <!-- Header -->
     <header class="mb-8">
-        <h1 class="text-5xl font-bold" style="font-family: 'Orbitron', sans-serif;">Charter Certificate Creator</h1>
+        <h1 class="text-5xl font-bold" style="font-family: 'Orbitron', sans-serif; color: #F5DEB3;">Charter Certificate Creator</h1>
     </header>
     <!-- Main content -->
     <main class="w-full max-w-md">
-        <form id="name-form" class="bg-blue-800 p-6 rounded-lg shadow-lg">
-            <label for="name" class="block text-white text-sm font-bold mb-2" style="font-family: 'Orbitron', sans-serif;">Enter your name:</label>
+        <form id="name-form" class="p-6 rounded-lg shadow-lg">
+            <label for="name" class="block text-sm font-bold mb-2" style="font-family: 'Orbitron', sans-serif; color: #F5DEB3;">Enter your name:</label>
             <input type="text" id="name" name="name" required class="shadow appearance-none border border-white rounded w-full py-2 px-3 text-blue-900 leading-tight focus:outline-none focus:shadow-outline bg-white">
-            <button type="submit" class="mt-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300" style="font-family: 'Orbitron', sans-serif;">Generate Certificate</button>
+            <button type="submit" class="mt-4 btn-custom font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300" style="font-family: 'Orbitron', sans-serif;">Generate Certificate</button>
         </form>
     </main>
     <!-- Certificate display area -->
-    <div id="certificate-container" class="mt-8 hidden md:max-w-4xl mx-auto border-4 border-white p-4 rounded-lg bg-blue-800">
+    <div id="certificate-container" class="mt-8 hidden md:max-w-4xl mx-auto border-4 border-white p-4 rounded-lg">
         <img id="certificate-img" alt="Certificate" class="max-w-full h-auto">
         <div class="mt-4 space-x-4">
-            <button id="print-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300" style="font-family: 'Orbitron', sans-serif;">Print Certificate</button>
-            <button id="create-another-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 hidden" style="font-family: 'Orbitron', sans-serif;">Create Another</button>
+            <button id="print-btn" class="btn-custom font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300" style="font-family: 'Orbitron', sans-serif;">Print Certificate</button>
+            <button id="create-another-btn" class="btn-custom font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 hidden" style="font-family: 'Orbitron', sans-serif;">Create Another</button>
         </div>
-        <p class="text-sm text-gray-300 mt-2" style="font-family: 'Orbitron', sans-serif;">For best results, set your printer to landscape orientation and disable headers and footers in the print settings.</p>
+        <p class="text-sm mt-2" style="font-family: 'Orbitron', sans-serif; color: #F5DEB3;">For best results, set your printer to landscape orientation and disable headers and footers in the print settings.</p>
     </div>
     <!-- Hidden canvas for certificate generation -->
     <canvas id="canvas" style="display:none;"></canvas>
@@ -103,11 +124,8 @@
             window.print();
         });
 
-        // Handle "Create Another" button click
         createAnotherBtn.addEventListener('click', function() {
-            // Clear the input field
             nameInput.value = '';
-            // Hide the certificate container and "Create Another" button
             certificateContainer.classList.add('hidden');
             createAnotherBtn.classList.add('hidden');
         });
